@@ -31,9 +31,79 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="main.c">
+		<Unit filename="../COPYING" />
+		<Unit filename="../README.md" />
+		<Unit filename="../TODO" />
+		<Unit filename="../board.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="../board.h" />
+		<Unit filename="../chess.h" />
+		<Unit filename="../cmd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../cmd.h" />
+		<Unit filename="../color.h" />
+		<Unit filename="../eng.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../eng.h" />
+		<Unit filename="../fen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../fen.h" />
+		<Unit filename="../game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../game.h" />
+		<Unit filename="../genmoves.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../genmoves.h" />
+		<Unit filename="../hooce.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../hooce.h" />
+		<Unit filename="../io.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../io.h" />
+		<Unit filename="../modinit.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../modinit.h" />
+		<Unit filename="../move.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../move.h" />
+		<Unit filename="../movestack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../movestack.h" />
+		<Unit filename="../nodestack.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../nodestack.h" />
+		<Unit filename="../piece.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../piece.h" />
+		<Unit filename="../search.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../search.h" />
+		<Unit filename="../square.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../square.h" />
+		<Unit filename="../types.h" />
+		<Unit filename="../uci.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../util.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../util.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

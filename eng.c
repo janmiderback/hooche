@@ -73,7 +73,7 @@ t_bool eng_start()
         cmdstr = io_getln();
         eng_handle_cmd(cmdstr);
     }
-    
+
     /* Need not reset sig_exit since we shall quit. */
 
     return TRUE;
@@ -135,7 +135,7 @@ void eng_handle_cmd(const char* cmdstr)
             /* Do nothing */
             break;
     }
-    
+
     if (p_uicmd != NULL) free(p_uicmd);
 }
 
@@ -155,9 +155,9 @@ void eng_search(void)
     t_move      *p_move;
     char         movestr[10];
     //What to do here?
-    
+
     // Search the position set.
-    
+
     // 1. Generate the root moves.
     //move
     gen_rootmoves(&(eng.game));
@@ -179,9 +179,9 @@ void eng_search(void)
     // - Shall we do quiecence search at each iteration?
     //     Seems logical to only do the quiecence search after the full search.
     //     ???
-    for (
-    search
-    
+//    for (
+//    search
+
     // 3. Do something with best move.
 }
 
@@ -207,8 +207,8 @@ static void eng_handle_uci(const t_uicmd_uci* p_cmd)
 
 static void eng_handle_debug(const t_uicmd_debug* p_cmd)
 {
-    eng.debug = p_cmd->on; 
-    
+    eng.debug = p_cmd->on;
+
     if (eng.iomode == IOMODE_NORMAL) {
         if (eng.debug) io_println("Debug mode turned on.");
         else           io_println("Debug mode turned off.");
@@ -256,7 +256,7 @@ static void eng_handle_position(const t_uicmd_position* p_cmd)
             game_init_fen(&(eng.game), p_cmd->fenstring);
         }
         if (p_cmd->nmoves > 0) {
-            const t_bool legal = game_play_moves(&(eng.game), p_cmd->moves, p_cmd->nmoves);    
+            const t_bool legal = game_play_moves(&(eng.game), p_cmd->moves, p_cmd->nmoves);
             if (!legal) {
                 io_println("Illegal move found. Moves after and including illegal move ignored");
             }
@@ -275,7 +275,7 @@ static void eng_handle_go(const t_uicmd_go* p_cmd)
     else {
         io_println("Command ignored. Already searching.");
     }
-        
+
 }
 
 
@@ -298,7 +298,7 @@ static void eng_handle_ponderhit(const t_uicmd_ponderhit* p_cmd)
     else {
         io_println("Command ignored. Not pondering.");
     }
-    
+
 }
 
 
