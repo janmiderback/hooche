@@ -35,10 +35,12 @@ t_bool fen_parse(const char* fen, t_game* p_game)
     char       fen_cpy[MAX_FEN_LEN + 1];
     const char castle_string[5] = "KkQq";
     char*      fen_field;
-	t_board*   p_board = &(p_game->board);
+    t_board*   p_board = &(p_game->board);
     t_square   sq;
     
     assert(fen != NULL);
+
+    (void)castle_string;
 
 	/* Initialize. */
 	for (sq = A1; sq < OFF_BOARD; ++sq)
@@ -98,7 +100,8 @@ static t_bool fen_parse_pieces(const char* pieces, t_game* p_game)
     t_square    sq = A1;
     char        c;
 
-    while (c = *p++) {
+    while (c = *p++)
+    {
         if (c == '/' || c == '\\') {
             /* New rank */
             if (rank == RANK_1) return FALSE;  /* Must not pass rank 1 */

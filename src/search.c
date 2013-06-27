@@ -31,17 +31,21 @@ void search_ids(void)
 
 void search_pvs(void)
 {
-   //if( depth == 0 ) return search_quiesce(alpha, beta);
-   t_bool bSearchPv = TRUE;
+	//if( depth == 0 ) return search_quiesce(alpha, beta);
+	t_bool bSearchPv = TRUE;
 
 #if 0
-   for ( all moves)  {
+   for ( all moves)
+   {
       make
-      if ( bSearchPv ) {
+      if ( bSearchPv )
+      {
          score = -pvSearch(-beta, -alpha, depth - 1);
-      } else {
+      }
+      else
+      {
          score = -zwSearch(-alpha, depth - 1);
-         if ( score > alpha ) // in fail-soft ... && score < beta ) is common
+         if (score > alpha ) // in fail-soft ... && score < beta ) is common
             score = -pvSearch(-beta, -alpha, depth - 1); // re-search
       }
       unmake

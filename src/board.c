@@ -33,7 +33,7 @@ const char* attack_dir_names[4] = {
     "VERTICAL ATTACK"
 };
 
-const char piece_chars[3][7] = { "PNBRQK ", "pnbrqk ", "       "};
+const char piece_chars[3][8] = { "PNBRQK ", "pnbrqk ", "       "};
 
 
 void board_init_bbs(t_board* me)
