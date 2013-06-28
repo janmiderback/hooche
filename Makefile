@@ -1,4 +1,4 @@
-CC=gcc
+CC=c99
 CFLAGS=-Wall -I.
 #LIBS=-lm
 RM=rm
@@ -46,21 +46,26 @@ _OBJ = 	board.o		\
 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
+_TESTOBJ = testrunner.o \
+           board_test.o
+
+TESTOBJ = $(patsubst %,$(ODIR)/%,$(_TESTOBJ))
+
 $(ODIR)/%.o: %.c $(DEPS)
 	@mkdir -p obj
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 hooche: $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^ 
+	$(CC) $(CFLAGS) -o $@ $^
 
-hooche-test:
-
+hooche-test: $(OBJ) $(TESTOBJ)
+	$(CC) $(CFLAGS) -DUNITTEST -o $@ $^
 
 .PHONY: test clean
 
-test:
+test: hooche-test
+	hooche-test
 
 clean:
 	$(RM) -f hooche
 	$(RM) -rf $(ODIR)
-

@@ -25,6 +25,7 @@
 
 int main(void)
 {
+#ifndef UNITTEST
     t_bool init_ok;
     int    retval;
 
@@ -33,16 +34,35 @@ int main(void)
      */
     init_ok = modinit();
 
-    if (init_ok) {
+    if (init_ok)
+    {
         /*
          * Start the engine
          */
         retval = eng_start();
     }
-    else {
+    else
+    {
         fprintf(stderr, "FATAL ERROR: Failed to initialize engine\n");
         retval = 1;
     }
+
+    return retval;
+#else
+    char* result = all_tests();
+
+    if (result != 0)
+    {
+        printf("%s\n", result);
+    }
+    else
+    {
+        printf("ALL TESTS PASSED\n");
+    }
+    
+    printf("Tests run: %d\n", tests_run);
+    retval = (result != 0);
+#endif
 
     return retval;
 }
