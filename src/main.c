@@ -22,12 +22,16 @@
 #include "eng.h"
 #include "cmd.h"
 #include "io.h"
+#ifdef UNITTEST
+#include "testrunner.h"
+#endif
 
 int main(void)
 {
+	int retval;
+	
 #ifndef UNITTEST
     t_bool init_ok;
-    int    retval;
 
     /*
      * Initialize the modules.
@@ -49,7 +53,7 @@ int main(void)
 
     return retval;
 #else
-    char* result = all_tests();
+    char* result = run_all_tests();
 
     if (result != 0)
     {

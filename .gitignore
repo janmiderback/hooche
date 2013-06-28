@@ -15,7 +15,8 @@
 *.exe
 *.out
 *.app
+hooche
+hooche-test
 
 # Backup files
 *~
-
