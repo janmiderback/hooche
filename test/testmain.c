@@ -23,17 +23,18 @@
 /**
  * Helper macro to run a suite of minunit tests.
  */
-#define run_test_suite(suite) do                                \
-                              {                                 \
-							      char* message = (suite)();    \
-								  if (message)                  \
-                                  {                             \
-                                      printf("%s\n", message);  \
-                                      printf("TESTS FAILED\n"); \
-                                      printf("Tests run: %d\n", mu_tests_run); \
-                                      return 0;                 \
-                                  }                             \
-                              } while (0)
+#define run_test_suite(suite)         \
+    do                                \
+    {                                 \
+        char* message = (suite)();    \
+        if (message)                  \
+        {                             \
+            printf("%s\n", message);  \
+            printf("TESTS FAILED\n"); \
+            printf("Tests run: %d\n", mu_tests_run); \
+            return 0;                 \
+        }                             \
+    } while (0)
 
 /**
  * Need to define the minunit test counter.

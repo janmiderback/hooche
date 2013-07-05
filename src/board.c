@@ -24,9 +24,23 @@
 
 #include "board.h"
 
+
 const char* color_names[3] = { "WHITE", "BLACK", "NONE" };
 
-const char* attack_dir_names[4] = {
+const char* square_names[64] =
+{
+    "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1",
+    "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2",
+    "a3", "b3", "c3", "d3", "e3", "f3", "g3", "h3",
+    "a4", "b4", "c4", "d4", "e4", "f4", "g4", "h4",
+    "a5", "b5", "c5", "d5", "e5", "f5", "g5", "h5",
+    "a6", "b6", "c6", "d6", "e6", "f6", "g6", "h6",
+    "a7", "b7", "c7", "d7", "e7", "f7", "g7", "h7",
+    "a8", "b8", "c8", "d8", "e8", "f8", "g8", "h8"
+};
+
+const char* attack_dir_names[4] =
+{
     "HORIZONTAL ATTACK",
     "DIAG A1H8 ATTACK",
     "DIAG A8H1 ATTACK",
@@ -44,19 +58,25 @@ void board_init_bbs(t_board* me)
 	me->color_bbs[WHITE] = (t_bitboard)0;
 	me->color_bbs[BLACK] = (t_bitboard)0;
 	me->occupied_bb = (t_bitboard)0;
-	for (p = 0; p < 6; p++)
+	
+    for (p = 0; p < 6; p++)
     {
 		me->piece_bbs[p] = (t_bitboard)0;
     }
-	me->piece_count[WHITE] = 0;
+	
+    me->piece_count[WHITE] = 0;
 	me->piece_count[BLACK] = 0;
 
-	for (square = A1; square < OFF_BOARD; square++) {
-        if (me->color[square] != NO_COLOR) {
+	for (square = A1; square < OFF_BOARD; square++)
+    {
+        if (me->color[square] != NO_COLOR)
+        {
 			BB_SET_SQ(me->occupied_bb, square);
 			BB_SET_SQ(me->color_bbs[me->color[square]], square);
 			BB_SET_SQ(me->piece_bbs[me->piece[square]], square);
-			if (me->piece[square] != PAWN) {
+			
+            if (me->piece[square] != PAWN)
+            {
 				me->piece_count[me->color[square]]++;
             }
 		}
@@ -70,6 +90,13 @@ void board_init_bbs(t_board* me)
 
 	me->king_square[WHITE] = first_square(me->piece_bbs[KING] & me->color_bbs[WHITE]);
 	me->king_square[BLACK] = first_square(me->piece_bbs[KING] & me->color_bbs[BLACK]);
+}
+
+
+const char* square_tostr(const t_square me)
+{
+    assert(A1 <= me && me <= H8);
+    return square_names[me];
 }
 
 
@@ -396,7 +423,7 @@ static void initialize_attacks(void)
         /*
         bb_print(attack_masks[square][VERTICAL_ATTACK],
                  "attack_masks",
-                 square_names[square],
+                 square_namesr[square],
                  attack_dir_names[VERTICAL_ATTACK],
                  NULL);
         */

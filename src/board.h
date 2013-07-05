@@ -30,12 +30,36 @@
 void board_gen_moves(
 */
 
+/*
+ * Types
+ */
 
-typedef unsigned long long t_bitboard;
+typedef signed char t_square;
+/* NOTE: These are not just named values. Lots of things are based on the
+ * particular value of each entry in the enum. Be careful to change!
+ */
+enum {
+    A1, B1, C1, D1, E1, F1, G1, H1,
+    A2, B2, C2, D2, E2, F2, G2, H2,
+    A3, B3, C3, D3, E3, F3, G3, H3,
+    A4, B4, C4, D4, E4, F4, G4, H4,
+    A5, B5, C5, D5, E5, F5, G5, H5,
+    A6, B6, C6, D6, E6, F6, G6, H6,
+    A7, B7, C7, D7, E7, F7, G7, H7,
+    A8, B8, C8, D8, E8, F8, G8, H8,
+    OFF_BOARD
+};
+
+typedef uint64_t t_bitboard;
 
 typedef struct
 {
+    /**
+     * Array of piece bitboards.
+     * Gives, per piece, the occupation status of the board.
+     */
 	t_bitboard piece_bbs[6];
+    
 	t_bitboard color_bbs[2];
 	t_bitboard occupied_bb;
 	t_piece    piece[64];
@@ -59,8 +83,17 @@ typedef struct
     */
 } t_board;
 
+/**
+ * Array of square names.
+ */
 extern const char* square_names[64];
+
+/**
+ * Array of color names.
+ * "WHITE", "BLACK", "NONE".
+ */
 extern const char* color_names[3];
+
 /*extern const char* piece_names[*/
 extern const char* attack_dir_names[4];
 
@@ -92,7 +125,10 @@ void board_init_bbs(t_board* me);
  */
 void board_tostr(t_board* me, char* s);
 
-
+/**
+ * TODO
+ */
+const char* square_tostr(const t_square me);
 
 
 

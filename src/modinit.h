@@ -20,9 +20,10 @@
 #ifndef MODINIT_H_
 #define MODINIT_H_
 
-#include "types.h"
+#include <hooche.h>
 
-t_bool modinit(void);
+
+bool modinit(void);
 
 
 #endif /*MODINIT_H_*/

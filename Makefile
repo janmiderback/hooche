@@ -19,7 +19,7 @@ DEPS = 	board.h 	 \
 	fen.h		 \
 	game.h		 \
 	genmoves.h	 \
-	hooche.h         \
+	hooche.h     \
 	io.h		 \
 	modinit.h	 \
 	move.h		 \
@@ -27,11 +27,10 @@ DEPS = 	board.h 	 \
 	nodestack.h	 \
 	piece.h		 \
 	search.h	 \
-	square.h	 \
 	types.h		 \
 	util.h
  
-_OBJ = 	board.o         \
+_OBJ = 	board.o \
 	cmd.o		\
 	eng.o		\
 	fen.o		\
@@ -44,7 +43,6 @@ _OBJ = 	board.o         \
 	nodestack.o	\
 	piece.o		\
 	search.o	\
-	square.o	\
 	uci.o		\
 	util.o
 

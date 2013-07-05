@@ -20,32 +20,21 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-
-/*
- * General common purpose types.
- */
-
-typedef int t_bool;
-#ifndef WIN32
-enum { FALSE, TRUE };
-#endif
+#include <stdint.h>
 
 
 /*
  * Chess-specific types.
  */
 
-
-
-
-typedef signed char t_file;
+typedef int8_t t_file;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
 enum { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_OFF };
 
 
-typedef signed char t_rank;
+typedef int8_t t_rank;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
@@ -65,11 +54,12 @@ enum { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_OFF 
 #define MAX_MOVES 256
 
 /* Attack direction */
-typedef signed char t_attack_dir;
+typedef int8_t t_attack_dir;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
-enum {
+enum
+{
     HORIZONTAL_ATTACK,
     DIAG_A1H8_ATTACK,
     DIAG_A8H1_ATTACK,
@@ -77,7 +67,7 @@ enum {
 };
 
 /**
- * Castling rights.
+ * Castling rights bitfield.
  * 
  * Bit
  * 0    White can castle king-side
@@ -85,7 +75,7 @@ enum {
  * 2    White can castle queen-side
  * 3    Black can castle queen-side
  */
-typedef unsigned char t_castle_rights;
+typedef uint8_t t_castle_rights;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
