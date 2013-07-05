@@ -17,7 +17,7 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "hooce.h"
+#include "hooche.h"
 #include "square.h"
 
 static const char* square_names[64] = {

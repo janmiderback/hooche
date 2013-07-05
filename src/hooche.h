@@ -17,8 +17,8 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef HOOCE_H_
-#define HOOCE_H_
+#ifndef HOOCHE_H_
+#define HOOCHE_H_
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -27,16 +27,14 @@
 #include <ctype.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <math.h>
 
-#ifdef WIN32
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#else
-//#error "Only Win32 supported"
+#include <types.h>
+
+#ifdef UNITTEST
+#include <minunit.h>
 #endif
 
-#include "types.h"
+#define HOOCHE_VER "0.1"
 
-#define HOOCE_VER "0.1"
-
-#endif /*HOOCE_H_*/
+#endif /*HOOCHE_H_*/

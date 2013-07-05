@@ -20,7 +20,7 @@
 #ifndef MOVE_H_
 #define MOVE_H_
 
-#include "hooce.h"
+#include "hooche.h"
 #include "board.h"
 
 typedef struct {

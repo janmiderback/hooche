@@ -17,7 +17,7 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "hooce.h"
+#include "hooche.h"
 #include "piece.h"
 
 static const char* white_piece_names[] = { "P", "N", "B", "R", "Q", "K", "" };

@@ -17,7 +17,7 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "hooce.h"
+#include "hooche.h"
 #include "modinit.h"
 #include "eng.h"
 #include "cmd.h"
@@ -30,8 +30,7 @@ int main(void)
 {
 	int retval;
 	
-#ifndef UNITTEST
-    t_bool init_ok;
+    bool init_ok;
 
     /*
      * Initialize the modules.
@@ -50,23 +49,6 @@ int main(void)
         fprintf(stderr, "FATAL ERROR: Failed to initialize engine\n");
         retval = 1;
     }
-
-    return retval;
-#else
-    char* result = run_all_tests();
-
-    if (result != 0)
-    {
-        printf("%s\n", result);
-    }
-    else
-    {
-        printf("ALL TESTS PASSED\n");
-    }
-    
-    printf("Tests run: %d\n", tests_run);
-    retval = (result != 0);
-#endif
 
     return retval;
 }

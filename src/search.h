@@ -20,7 +20,7 @@
 #ifndef SEARCH_H_
 #define SEARCH_H_
 
-#include "hooce.h"
+#include "hooche.h"
 #include "move.h"
 
 typedef struct

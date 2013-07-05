@@ -1,5 +1,7 @@
+#CURDIR=$(shell pwd)
+
 CC=c99
-CFLAGS=-Wall -I. -Isrc
+CFLAGS=-Wall -I. -I./src -I./test
 #LIBS=-lm
 RM=rm -f
 RMDIR=rm -rf
@@ -9,7 +11,7 @@ VPATH = src:test
 
 .PHONY: test mkobjdir clean
 
-DEPS = 	board.h 	\
+DEPS = 	board.h 	 \
 	chess.h 	 \
 	cmd.h 		 \
 	color.h		 \
@@ -17,7 +19,7 @@ DEPS = 	board.h 	\
 	fen.h		 \
 	game.h		 \
 	genmoves.h	 \
-	hooce.h		 \
+	hooche.h         \
 	io.h		 \
 	modinit.h	 \
 	move.h		 \
@@ -29,7 +31,7 @@ DEPS = 	board.h 	\
 	types.h		 \
 	util.h
  
-_OBJ = 	board.o	\
+_OBJ = 	board.o         \
 	cmd.o		\
 	eng.o		\
 	fen.o		\
@@ -62,8 +64,7 @@ hooche: main.o $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 hooche-test: DEFINES += -DUNITTEST
-hooche-test: CFLAGS += -Itest
-hooche-test: testmain.o $(OBJ) $(TESTOBJ)
+hooche-test: testmain.o $(TESTOBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 

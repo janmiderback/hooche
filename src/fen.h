@@ -21,7 +21,7 @@
 #ifndef FEN_H_
 #define FEN_H_
 
-#include "hooce.h"
+#include "hooche.h"
 #include "game.h"
 
 

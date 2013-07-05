@@ -17,7 +17,7 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <math.h>
+#include <hooche.h>
 
 #include "move.h"
 #include "fen.h"

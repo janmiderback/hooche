@@ -17,7 +17,7 @@
  * along with Hooce.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "hooce.h"
+#include "hooche.h"
 #include "io.h"
 #include "game.h"
 #include "board.h"
@@ -60,7 +60,7 @@ void modinit_eng(void)
 t_bool eng_start()
 {
     /* Print engine start-up banner */
-    io_println("Hooce v" HOOCE_VER " - UCI chess engine");
+    io_println("Hooce v" HOOCHE_VER " - UCI chess engine");
     io_println("Written by Jan Miderbaeck (jan.miderback@gmail.com)");
     io_println("Entering normal mode.");
     io_println("Type \"uci\" to enter UCI mode.");

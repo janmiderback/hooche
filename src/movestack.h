@@ -20,7 +20,7 @@
 #ifndef MOVESTACK_H_
 #define MOVESTACK_H_
 
-#include "hooce.h"
+#include "hooche.h"
 #include "move.h"
 
 #define MOVESTACK_SIZE  (128 * 128)

@@ -1,7 +1,4 @@
-#include <stdio.h>
-
-#include "minunit.h"
-
+#include <board.c>
  
 static int foo = 7;
 static int bar = 4;

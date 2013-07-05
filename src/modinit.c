@@ -18,7 +18,7 @@
  */
 
 
-#include "hooce.h"
+#include "hooche.h"
 #include "modinit.h"
 
 extern void modinit_bitboard(t_bool* ok);

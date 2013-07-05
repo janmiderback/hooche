@@ -20,7 +20,7 @@
 #ifndef NODESTACK_H_
 #define NODESTACK_H_
 
-#include "hooce.h"
+#include "hooche.h"
 #include "search.h"
 
 #define NODESTACK_SIZE  (128 * 128)
