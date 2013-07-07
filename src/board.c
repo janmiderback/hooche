@@ -18,11 +18,9 @@
  */
 
 #include <hooche.h>
-
-#include "move.h"
-#include "fen.h"
-
-#include "board.h"
+#include <move.h>
+#include <fen.h>
+#include <board.h>
 
 
 const char* color_names[3] = { "WHITE", "BLACK", "NONE" };
@@ -55,6 +53,7 @@ void board_init_bbs(t_board* me)
 	t_piece p;
 	t_square square;
 
+    /* Reset all bitboards to zero. */
 	me->color_bbs[WHITE] = (t_bitboard)0;
 	me->color_bbs[BLACK] = (t_bitboard)0;
 	me->occupied_bb = (t_bitboard)0;
@@ -67,6 +66,7 @@ void board_init_bbs(t_board* me)
     me->piece_count[WHITE] = 0;
 	me->piece_count[BLACK] = 0;
 
+    /* Set bitboards according piece and color information. */
 	for (square = A1; square < OFF_BOARD; square++)
     {
         if (me->color[square] != NO_COLOR)
@@ -88,6 +88,7 @@ void board_init_bbs(t_board* me)
     */
 #endif
 
+    /* Set king squares. */ 
 	me->king_square[WHITE] = first_square(me->piece_bbs[KING] & me->color_bbs[WHITE]);
 	me->king_square[BLACK] = first_square(me->piece_bbs[KING] & me->color_bbs[BLACK]);
 }

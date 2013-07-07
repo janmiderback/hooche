@@ -20,8 +20,6 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "board.h"
-#include "square.h"
 #include "piece.h"
 #include "color.h"
 #include "types.h"
@@ -30,15 +28,17 @@
 void board_gen_moves(
 */
 
-/*
- * Types
- */
 
-typedef signed char t_square;
+/**
+ * Type representing a square on the board.
+ * Takes the integer enumeration values A1 to H8.
+ */
+typedef int8_t t_square;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
-enum {
+enum
+{
     A1, B1, C1, D1, E1, F1, G1, H1,
     A2, B2, C2, D2, E2, F2, G2, H2,
     A3, B3, C3, D3, E3, F3, G3, H3,
@@ -50,8 +50,37 @@ enum {
     OFF_BOARD
 };
 
+
+/**
+ * Type representing square or piece color.
+ * Takes the integer enumeration values WHITE, BLACK, or NO_COLOR.
+ */
+typedef int8_t t_color;
+/* NOTE: These are not just named values. Lots of things are based on the
+ * particular value of each entry in the enum. Be careful to change!
+ */
+enum
+{
+    WHITE,
+    BLACK,
+    NO_COLOR
+};
+
+
+#define COLOR_FLIP(s) ((s) ^ 1)
+
+
+
+
+/**
+ * Type for bitboard (64-bit).
+ */
 typedef uint64_t t_bitboard;
 
+
+/**
+ * Type representing a board position.
+ */
 typedef struct
 {
     /**
@@ -83,8 +112,11 @@ typedef struct
     */
 } t_board;
 
+
+
 /**
  * Array of square names.
+ * 
  */
 extern const char* square_names[64];
 
@@ -104,6 +136,7 @@ extern const char* attack_dir_names[4];
 #define RANK_OF_SQ(s)  ((t_rank)(s) >> 3)
 
 #define BOARD_STR_SIZE 1024
+
 
 /**
  * TODO
@@ -152,7 +185,7 @@ extern t_bitboard castle_qs_bbs[2];
 
 
 /**
- * Print a bitboard
+ * Prints a bitboard
  */
 void bb_print(
     t_bitboard bb,
