@@ -28,12 +28,19 @@
 void board_gen_moves(
 */
 
+extern const char* square_names[64];
+extern const char* color_names[3];
+/*extern const char* piece_names[*/
+extern const char* attack_dir_names[4];
+
+
+
 
 /**
  * Type representing a square on the board.
  * Takes the integer enumeration values A1 to H8.
  */
-typedef int8_t t_square;
+typedef int8_t square_t;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
@@ -49,6 +56,11 @@ enum
     A8, B8, C8, D8, E8, F8, G8, H8,
     OFF_BOARD
 };
+
+/**
+ * Returns the string representation of a square (e.g. "a1").
+ */
+#define square_tostr(me) (square_names[(me)])
 
 
 /**
@@ -67,7 +79,7 @@ enum
 };
 
 
-#define COLOR_FLIP(s) ((s) ^ 1)
+#define color_flip(me) ((me) ^ 1)
 
 
 
@@ -114,22 +126,6 @@ typedef struct
 
 
 
-/**
- * Array of square names.
- * 
- */
-extern const char* square_names[64];
-
-/**
- * Array of color names.
- * "WHITE", "BLACK", "NONE".
- */
-extern const char* color_names[3];
-
-/*extern const char* piece_names[*/
-extern const char* attack_dir_names[4];
-
-
 /* Some board-transforming stuff */
 #define RANK_FILE_TO_SQUARE(r, f) ((t_square)((r) << 3) | (f))
 #define FILE_OF_SQ(s)  ((t_file)(s) & 7)
@@ -158,10 +154,6 @@ void board_init_bbs(t_board* me);
  */
 void board_tostr(t_board* me, char* s);
 
-/**
- * TODO
- */
-const char* square_tostr(const t_square me);
 
 
 

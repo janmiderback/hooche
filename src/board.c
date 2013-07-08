@@ -23,7 +23,12 @@
 #include <board.h>
 
 
-const char* color_names[3] = { "WHITE", "BLACK", "NONE" };
+const char* color_names[3] =
+{
+    "WHITE",
+    "BLACK",
+    "NONE"
+};
 
 const char* square_names[64] =
 {
@@ -45,7 +50,12 @@ const char* attack_dir_names[4] =
     "VERTICAL ATTACK"
 };
 
-const char piece_chars[3][8] = { "PNBRQK ", "pnbrqk ", "       "};
+const char piece_chars[3][8] =
+{
+    "PNBRQK ",
+    "pnbrqk ",
+    "       "
+};
 
 
 void board_init_bbs(t_board* me)
