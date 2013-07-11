@@ -20,8 +20,6 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "piece.h"
-#include "color.h"
 #include "types.h"
 
 /*
@@ -30,14 +28,13 @@ void board_gen_moves(
 
 extern const char* square_names[64];
 extern const char* color_names[3];
-/*extern const char* piece_names[*/
+extern const char  piece_chars[3][8];
+extern const char* piece_names[7];
 extern const char* attack_dir_names[4];
 
 
-
-
 /**
- * Type representing a square on the board.
+ * Type representing a chessboard square.
  * Takes the integer enumeration values A1 to H8.
  */
 typedef int8_t square_t;
@@ -60,14 +57,58 @@ enum
 /**
  * Returns the string representation of a square (e.g. "a1").
  */
-#define square_tostr(me) (square_names[(me)])
+#define square_to_str(me) (square_names[(me)])
+
+/**
+ * TODO
+ */
+#define square_get_file(me)  ((file_t)(me) & 7)
+
+/**
+ * TODO
+ */
+#define square_get_rank(me)  ((rank_t)(me) >> 3)
+
+
+/**
+ * TODO
+ */
+typedef int8_t file_t;
+/* NOTE: These are not just named values. Lots of things are based on the
+ * particular value of each entry in the enum. Be careful to change!
+ */
+enum
+{
+    FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_OFF
+};
+
+
+/**
+ * TODO
+ */
+typedef int8_t rank_t;
+/* NOTE: These are not just named values. Lots of things are based on the
+ * particular value of each entry in the enum. Be careful to change!
+ */
+enum
+{ 
+    RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_OFF
+};
+
+/**
+ * TODO
+ */
+#define rank_file_to_square(rank, file) ((square_t)((rank) << 3) | (file))
+
+
+
 
 
 /**
  * Type representing square or piece color.
  * Takes the integer enumeration values WHITE, BLACK, or NO_COLOR.
  */
-typedef int8_t t_color;
+typedef int8_t color_t;
 /* NOTE: These are not just named values. Lots of things are based on the
  * particular value of each entry in the enum. Be careful to change!
  */
@@ -78,16 +119,36 @@ enum
     NO_COLOR
 };
 
-
+/**
+ * TODO
+ */
 #define color_flip(me) ((me) ^ 1)
 
 
+typedef int8_t piece_t;
+/* NOTE: These are not just named values. Lots of things are based on the
+ * particular value of each entry in the enum. Be careful to change!
+ */
+enum
+{
+    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING, NO_PIECE
+};
+
+/**
+ * TODO
+ */
+#define piece_to_str(me) (piece_names[(me)])
+
+/**
+ * TODO
+ */
+#define piece_to_char(me, color) (piece_chars[(color)][(me)])
 
 
 /**
  * Type for bitboard (64-bit).
  */
-typedef uint64_t t_bitboard;
+typedef uint64_t bitboard_t;
 
 
 /**
@@ -99,15 +160,15 @@ typedef struct
      * Array of piece bitboards.
      * Gives, per piece, the occupation status of the board.
      */
-	t_bitboard piece_bbs[6];
+	bitboard_t piece_bbs[6];
     
-	t_bitboard color_bbs[2];
-	t_bitboard occupied_bb;
-	t_piece    piece[64];
-	t_color    color[64];
-	t_square   king_square[2];
+	bitboard_t color_bbs[2];
+	bitboard_t occupied_bb;
+	piece_t    piece[64];
+	color_t    color[64];
+	square_t   king_square[2];
 	int        piece_count[2];
-	t_square   ep_square;
+	square_t   ep_square;
 
     /*
 	HASHKEY hashkey;
@@ -122,14 +183,12 @@ typedef struct
 	EVAL_BLOCK eval_stack[MAX_PLY];
 	PAWN_HASH_ENTRY pawn_hash_entry;
     */
-} t_board;
+} board_t;
 
 
 
-/* Some board-transforming stuff */
-#define RANK_FILE_TO_SQUARE(r, f) ((t_square)((r) << 3) | (f))
-#define FILE_OF_SQ(s)  ((t_file)(s) & 7)
-#define RANK_OF_SQ(s)  ((t_rank)(s) >> 3)
+
+
 
 #define BOARD_STR_SIZE 1024
 
@@ -137,50 +196,50 @@ typedef struct
 /**
  * TODO
  */
-void board_init(t_board* me);
+void board_init(board_t* me);
 
 /**
  * TODO
  */
-t_bool board_init_fen(t_board* me, const char* fen);
+bool board_init_fen(board_t* me, const char* fen);
 
 /**
  * TODO
  */
-void board_init_bbs(t_board* me);
+void board_init_bbs(board_t* me);
 
 /**
  * TODO
  */
-void board_tostr(t_board* me, char* s);
+void board_tostr(board_t* me, char* s);
 
 
 
 
 /* Single square bitboards */
-extern t_bitboard square_bbs[64];
+extern bitboard_t square_bbs[64];
 
 /* Pawn capture bitboards */
-extern t_bitboard pawn_caps_bbs[2][64];
+extern bitboard_t pawn_caps_bbs[2][64];
 
 /* Knight move bitboards */
-extern t_bitboard knight_move_bbs[64];
+extern bitboard_t knight_move_bbs[64];
 
 /* King move bitboards */
-extern t_bitboard king_move_bbs[64];
+extern bitboard_t king_move_bbs[64];
 
 /* TODO */
-extern t_bitboard castle_ks_bbs[2];
+extern bitboard_t castle_ks_bbs[2];
 
 /*TODO */
-extern t_bitboard castle_qs_bbs[2];
+extern bitboard_t castle_qs_bbs[2];
 
 
 /**
  * Prints a bitboard
  */
 void bb_print(
-    t_bitboard bb,
+    bitboard_t bb,
     const char* bbname,
     const char* i1,
     const char* i2,
@@ -190,31 +249,31 @@ void bb_print(
  * Returns an attack bitboard for the given sliding piece on the given square.
  * Created 070305; last modified 110607
  */
-t_bitboard bb_get_attack(t_board* p_board, t_piece piece, t_square square);
+bitboard_t bb_get_attack(board_t* p_board, piece_t piece, square_t square);
 
 
 /**
  * TODO
  */
-t_bitboard horizontal_attacks(t_square from, t_bitboard occupied);
+bitboard_t horizontal_attacks(square_t from, bitboard_t occupied);
 
 
 /**
  * TODO
  */
-t_bitboard vertical_attacks(t_square from, t_bitboard occupied);
+bitboard_t vertical_attacks(square_t from, bitboard_t occupied);
 
 
 /**
  * TODO
  */
-t_bitboard diagA1H8_attacks(t_square from, t_bitboard occupied);
+bitboard_t diagA1H8_attacks(square_t from, bitboard_t occupied);
 
 
 /**
  * TODO
  */
-t_bitboard diagA8H1_attacks(t_square from, t_bitboard occupied);
+bitboard_t diagA8H1_attacks(square_t from, bitboard_t occupied);
 
 
 /**
@@ -222,7 +281,7 @@ first_square():
 Returns the first square that is set in a bitboard. This 32-bit friendly routine was devised by Matt Taylor.
 Created 070105; last modified 120205
 **/
-t_square first_square(t_bitboard bitboard);
+square_t first_square(bitboard_t bitboard);
 
 
 /* Mask for square s. One single 1 on square */

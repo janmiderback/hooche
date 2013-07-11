@@ -20,25 +20,11 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-#include <stdint.h>
-
-
 /*
  * Chess-specific types.
  */
 
-typedef int8_t t_file;
-/* NOTE: These are not just named values. Lots of things are based on the
- * particular value of each entry in the enum. Be careful to change!
- */
-enum { FILE_A, FILE_B, FILE_C, FILE_D, FILE_E, FILE_F, FILE_G, FILE_H, FILE_OFF };
 
-
-typedef int8_t t_rank;
-/* NOTE: These are not just named values. Lots of things are based on the
- * particular value of each entry in the enum. Be careful to change!
- */
-enum { RANK_1, RANK_2, RANK_3, RANK_4, RANK_5, RANK_6, RANK_7, RANK_8, RANK_OFF };
 
 
 /*

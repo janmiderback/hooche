@@ -1,15 +1,16 @@
 #CURDIR=$(shell pwd)
 
+VPATH = src:test:obj
 CC=c99
 CFLAGS=-Wall -I. -I./src -I./test
 #LIBS=-lm
 RM=rm -f
 RMDIR=rm -rf
-
 ODIR=obj
-VPATH = src:test
 
-.PHONY: test mkobjdir clean
+$(ODIR)/%.o: %.c $(DEPS)
+	@mkdir -p obj
+	$(CC) $(CFLAGS) $(DEFINES) -c -o $@ $<
 
 DEPS = 	board.h 	 \
 	chess.h 	 \
@@ -30,13 +31,14 @@ DEPS = 	board.h 	 \
 	types.h		 \
 	util.h
  
-_OBJ = 	board.o \
+_OBJ = board.o \
 	cmd.o		\
 	eng.o		\
 	fen.o		\
 	game.o		\
 	genmoves.o	\
 	io.o		\
+	main.o      \
 	modinit.o	\
 	move.o		\
 	movestack.o	\
@@ -48,29 +50,23 @@ _OBJ = 	board.o \
 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-_TESTOBJ = board_test.o
+_TESTOBJ = board_test.o \
+	testmain.o
 
 TESTOBJ = $(patsubst %,$(ODIR)/%,$(_TESTOBJ))
 
-
-$(ODIR)/%.o: %.c $(DEPS)
-	@mkdir -p obj
-	$(CC) $(CFLAGS) $(DEFINES) -c -o $@ $<
-
-
-hooche: main.o $(OBJ)
+hooche: $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
 hooche-test: DEFINES += -DUNITTEST
-hooche-test: testmain.o $(TESTOBJ)
+hooche-test: $(TESTOBJ)
 	$(CC) $(CFLAGS) -o $@ $^
 
-
-.PHONY: test clean
-
+.PHONY: test
 test: hooche-test
 	hooche-test
 
+.PHONY: clean
 clean:
 	$(RM) hooche
 	$(RM) hooche-test

@@ -23,7 +23,9 @@
 #include "hooche.h"
 #include "board.h"
 
-typedef struct {
+
+typedef struct
+{
     t_square from;
     t_square to;
     t_piece  promote_piece;
