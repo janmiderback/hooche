@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hooche", "hooche.vcxproj", "{A462BD2C-2817-4B52-A5B8-EB37E9436A31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Debug|x64.ActiveCfg = Debug|x64
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Debug|x64.Build.0 = Debug|x64
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Debug|x86.ActiveCfg = Debug|Win32
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Debug|x86.Build.0 = Debug|Win32
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Release|x64.ActiveCfg = Release|x64
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Release|x64.Build.0 = Release|x64
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Release|x86.ActiveCfg = Release|Win32
+		{A462BD2C-2817-4B52-A5B8-EB37E9436A31}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81416B9D-52F3-4D5A-ADC4-F05FD2AA31A8}
+	EndGlobalSection
+EndGlobal

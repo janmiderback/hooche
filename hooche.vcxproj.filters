@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{cf14320c-5cb4-4da8-af56-4b3573d47228}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\board.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\board_test.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cmd.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\eng.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\fen.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\genmoves.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\modinit.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\move.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\movestack.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nodestack.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\search.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\testmain.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uci.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\board.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\chess.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cmd.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\eng.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fen.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\genmoves.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hooche.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\io.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="test\minunit.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\modinit.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\move.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\movestack.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nodestack.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\search.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
