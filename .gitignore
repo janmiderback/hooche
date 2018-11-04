@@ -20,3 +20,7 @@ hooche-test
 
 # Backup files
 *~
+
+# Visual Studio files
+*.suo
+*.user
